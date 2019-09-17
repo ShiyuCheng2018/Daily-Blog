@@ -11,3 +11,4 @@
 * dotenv
 * mongoose
 * body-parser
+* express-validator

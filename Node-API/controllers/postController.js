@@ -1,4 +1,5 @@
 const postModel = require("../models/postModel");
+const {validationResult} = require("express-validator");
 
 exports.getPosts = (req, res) =>{
     res.json({
@@ -10,16 +11,17 @@ exports.getPosts = (req, res) =>{
 
 exports.createPost = (req, res) => {
     const post = new postModel(req.body);
-    // console.log("CREATING POST: ", req.body);
-    post.save((err, result) => {
-        if(err){
-            return res.status(400).json({
-                error: err
-            })
-        }
+    // const errors = validationResult(req);
+    // if(!errors.isEmpty()){
+    //     //     return res.status(422).json({
+    //     //         error: errors.array()[0].msg
+    //     //     });
+    //     // }
+
+    post.save().then(result => {
         res.status(200).json({
             post: result
-        })
-    })
+        });
+    });
 };
 
