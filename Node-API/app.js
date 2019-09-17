@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mogoose = require("mongoose");
 const morgan = require("morgan");
+const bodyParser = require("body-parser");
 const dotEnv = require("dotenv");
 
 dotEnv.config();
@@ -20,6 +21,7 @@ const postRouter = require("./routes/postRouter");
 
 // Middleware
 app.use(morgan("dev"));
+app.use(bodyParser.json());
 app.use("/", postRouter);
 
 

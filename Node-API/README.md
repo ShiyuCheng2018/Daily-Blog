@@ -10,3 +10,4 @@
 * morgan
 * dotenv
 * mongoose
+* body-parser
