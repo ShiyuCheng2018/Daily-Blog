@@ -8,3 +8,5 @@
 * ExpressJs
 * nodemon
 * morgan
+* dotenv
+* mongoose
