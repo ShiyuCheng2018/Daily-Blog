@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e94d8ba7-0977-439a-85ea-ce443547bb8b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Node-API/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Node-API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Node-API/controllers/postController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/controllers/postController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Node-API/models/postModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/models/postModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Node-API/routes/postRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/routes/postRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Node-API/validator/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/validator/index.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1Udi2odFb8fumX9necy9WiY9d81" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/Node-API/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e94d8ba7-0977-439a-85ea-ce443547bb8b" name="Default Changelist" comment="" />
+      <created>1575692668996</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575692668996</updated>
+      <workItem from="1575692670220" duration="3158000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

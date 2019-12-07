@@ -1,23 +1,17 @@
 const postModel = require("../models/postModel");
-const {validationResult} = require("express-validator");
 
 exports.getPosts = (req, res) =>{
-    res.json({
-        posts: [
-            {title: "First post"}, {title: "Second post"}
-        ]
-    });
+    const posts = postModel.find()
+        .select("_id title body")
+        .then((posts) => {
+            res.json({posts})
+        })
+        .catch(err => console.log(err))
 };
 
 exports.createPost = (req, res) => {
     const post = new postModel(req.body);
-    // const errors = validationResult(req);
-    // if(!errors.isEmpty()){
-    //     //     return res.status(422).json({
-    //     //         error: errors.array()[0].msg
-    //     //     });
-    //     // }
-
+    // console.log(res.json(req.body));
     post.save().then(result => {
         res.status(200).json({
             post: result
