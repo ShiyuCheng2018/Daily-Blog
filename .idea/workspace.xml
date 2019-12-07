@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e94d8ba7-0977-439a-85ea-ce443547bb8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Node-API/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node-API/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node-API/controllers/postController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/controllers/postController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node-API/models/postModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/models/postModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node-API/routes/postRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/routes/postRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node-API/validator/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/validator/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Node-API/models/userModel.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +69,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575692668996</updated>
-      <workItem from="1575692670220" duration="3158000" />
+      <workItem from="1575692670220" duration="3501000" />
     </task>
     <servers />
   </component>
