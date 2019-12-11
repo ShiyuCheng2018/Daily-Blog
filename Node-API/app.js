@@ -18,11 +18,13 @@ mogoose.connection.on("error", err => {
 
 // Configure routes
 const postRouter = require("./routes/postRouter");
+const authRouter = require("./routes/authRouter");
 
 // Middleware
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use("/", postRouter);
+app.use("/", authRouter);
 
 
 
