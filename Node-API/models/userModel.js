@@ -39,7 +39,7 @@ userSchema.virtual('password')
     });
 
 // Methods
-userSchema.method = {
+userSchema.methods = {
     encryptPassword: function (password) {
         if(!password) return "";
         try {

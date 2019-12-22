@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e94d8ba7-0977-439a-85ea-ce443547bb8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Node-API/controllers/authController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Node-API/routes/authRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node-API/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Node-API/models/userModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/models/userModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Node-API/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Node-API/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Node-API/routes/authRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/routes/authRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Node-API/validator/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/validator/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +30,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-chat" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -79,7 +82,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575692668996</updated>
-      <workItem from="1575692670220" duration="8195000" />
+      <workItem from="1575692670220" duration="9474000" />
+      <workItem from="1576640714168" duration="360000" />
+      <workItem from="1576760936844" duration="4624000" />
     </task>
     <servers />
   </component>
@@ -91,7 +96,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
