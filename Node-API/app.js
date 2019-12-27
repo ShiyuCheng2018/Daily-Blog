@@ -23,6 +23,7 @@ const authRouter = require("./routes/authRouter");
 // Middleware
 app.use(morgan("dev"));
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use("/", postRouter);
 app.use("/", authRouter);
 
