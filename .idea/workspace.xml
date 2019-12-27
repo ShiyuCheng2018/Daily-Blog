@@ -6,9 +6,7 @@
       <change beforePath="$PROJECT_DIR$/Node-API/.env" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Node-API/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Node-API/controllers/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/controllers/authController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node-API/models/userModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/models/userModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node-API/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node-API/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Node-API/routes/authRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/routes/authRouter.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +82,7 @@
       <updated>1575692668996</updated>
       <workItem from="1575692670220" duration="9474000" />
       <workItem from="1576640714168" duration="360000" />
-      <workItem from="1576760936844" duration="7187000" />
+      <workItem from="1576760936844" duration="8674000" />
     </task>
     <servers />
   </component>

@@ -20,7 +20,7 @@ exports.signUp = async(req, res) =>{
 
 };
 
-exports.signin = (req, res) =>{
+exports.signIn = (req, res) =>{
     // Find the user based on email
     const {email, password} = req.body;
     User.findOne({email}, (err, user) => {
@@ -44,8 +44,10 @@ exports.signin = (req, res) =>{
         // Return response with user and token to frontend client
         const {_id, name, email} = user;
         return res.json({token, user: {_id, email, name}});
-    })
+    });
+};
 
-
-
+exports.signOut = (req, res) => {
+    res.clearCookie("t");
+    return res.json({message: "Sign out success!"})
 };

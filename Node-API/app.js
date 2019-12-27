@@ -3,6 +3,7 @@ const app = express();
 const mogoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const dotEnv = require("dotenv");
 
 dotEnv.config();
