@@ -5,7 +5,7 @@ exports.userById = (req, res, next, id) => {
         if(err || !user){
             return res.status(400).json({
                 error: "User not found."
-            })
+            });
         }
         req.profile = user; // Adds profile object in req with user info
         next()
@@ -16,7 +16,7 @@ exports.hasAuthorization = (req, res, next) => {
     const authorized = res.profile && req.auth && req.profile._id === req.auth._id;
     if(!authorized){
         return res.status(403).json({
-            error: "User is not authorized to perform this action",
+            error: "User is not authorized to perform this action.",
         })
     }
 };
@@ -30,4 +30,10 @@ exports.allUsers = (req, res) => {
         }
         res.json({users})
     }).select("name email updated created")
+};
+
+exports.getUser = (req,res) => {
+    req.profile.hashed_password = undefined;
+    req.profile.salt = undefined;
+    return res.json(req.profile);
 };
