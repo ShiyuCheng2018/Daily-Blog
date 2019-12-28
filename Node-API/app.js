@@ -20,6 +20,7 @@ mogoose.connection.on("error", err => {
 // Configure routes
 const postRouter = require("./routes/postRouter");
 const authRouter = require("./routes/authRouter");
+const userRouter = require("./routes/userRouter");
 
 // Middleware
 app.use(morgan("dev"));
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use("/", postRouter);
 app.use("/", authRouter);
+app.use("/", userRouter);
 app.use(function(err, req, res, next){
     if(err.name === 'UnauthorizedError'){
         res.status(401).json({error: "UnauthorizedError"});
