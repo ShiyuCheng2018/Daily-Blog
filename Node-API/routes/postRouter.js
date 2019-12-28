@@ -2,12 +2,18 @@ const express = require("express");
 const {createPostValidator, getErrors} = require("../validator");
 const {getPosts, createPost} = require("../controllers/postController");
 const {requireSignIn} = require("../controllers/authController");
+const {userById} = require("../controllers/userController");
+
 
 // Get router
 const router = express.Router();
 
-router.get("/", requireSignIn, getPosts);
-router.post("/post", createPostValidator, getErrors, createPost);
+router.get("/", getPosts);
+router.post("/post", requireSignIn, createPostValidator, getErrors, createPost);
+
+// Any route containing :userId, our app will first execute userById()
+router.param("userId", userById);
+
 
 // Export router
 module.exports = router;
