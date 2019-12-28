@@ -27,6 +27,11 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use("/", postRouter);
 app.use("/", authRouter);
+app.use(function(err, req, res, next){
+    if(err.name === 'UnauthorizedError'){
+        res.status(401).json({error: "UnauthorizedError"});
+    }
+});
 
 
 
