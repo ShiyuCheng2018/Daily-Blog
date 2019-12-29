@@ -17,11 +17,14 @@ exports.createPost = (req, res, next) => {
     form.parse(req, (err, fields, files) => {
         if(err){
             return res.status(400).json({
-                error: "Image could not be uploaded"
+                error: "Image could not be uploaded!"
             })
         }
         let post = new postModel(fields);
+        req.profile.hashed_password = undefined;
+        req.profile.salt = undefined;
         post.postedBy = req.profile;
+
         if(files.photo){
             post.photo.data = fs.readFileSync(files.photo.path);
             post.photo.contentType = files.photo.type;

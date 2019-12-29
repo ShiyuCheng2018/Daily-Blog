@@ -9,7 +9,7 @@ const {userById} = require("../controllers/userController");
 const router = express.Router();
 
 router.get("/", getPosts);
-router.post("/post", requireSignIn, createPostValidator, getErrors, createPost);
+router.post("/post/new/:userId", requireSignIn, getErrors, createPost, createPostValidator);
 
 // Any route containing :userId, our app will first execute userById()
 router.param("userId", userById);
