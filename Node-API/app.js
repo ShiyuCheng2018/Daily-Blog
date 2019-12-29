@@ -16,7 +16,6 @@ mogoose.connection.on("error", err => {
    console.log(`DB connection error : ${err.message}`);
 });
 
-
 // Configure routes
 const postRouter = require("./routes/postRouter");
 const authRouter = require("./routes/authRouter");
