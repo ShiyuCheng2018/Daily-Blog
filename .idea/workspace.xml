@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e94d8ba7-0977-439a-85ea-ce443547bb8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/front-end/.idea/front-end.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node-API/controllers/postController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/controllers/postController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Node-API/routes/postRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Node-API/routes/postRouter.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,9 +23,10 @@
   </component>
   <component name="ProjectId" id="1Udi2odFb8fumX9necy9WiY9d81" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-chat" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/front-end" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -81,7 +81,9 @@
       <workItem from="1575692670220" duration="9474000" />
       <workItem from="1576640714168" duration="360000" />
       <workItem from="1576760936844" duration="32854000" />
-      <workItem from="1577679921112" duration="1949000" />
+      <workItem from="1577679921112" duration="2725000" />
+      <workItem from="1578272679588" duration="1344000" />
+      <workItem from="1578447253133" duration="392000" />
     </task>
     <servers />
   </component>
