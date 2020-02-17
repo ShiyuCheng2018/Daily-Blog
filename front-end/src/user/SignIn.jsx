@@ -1,14 +1,13 @@
 import React, {Component} from "react";
 
-class SignUp extends Component{
+class SignIn extends Component{
     constructor(){
         super();
         this.state = {
-            name: "",
             email: "",
             password: "",
             error: "",
-            open: false
+            redirectToReferer: false
         }
     }
 
@@ -18,32 +17,30 @@ class SignUp extends Component{
     };
 
     clickSubmit = (event) => {
-      event.preventDefault();
-      const {name, email, password} = this.state;
-      const user = {
-          name,
-          email,
-          password
-      };
+        event.preventDefault();
+        const {email, password} = this.state;
+        const user = {
+            email,
+            password
+        };
 
-      this.signUp(user)
-          .then(data=>{
-              if(data.error){
-                  this.setState({error: data.error})
-              }else {
-                  this.setState({
-                      error: "",
-                      name:"",
-                      email:"",
-                      password:"",
-                      open: true
-                  })
-              }
-          })
+        this.signIn(user)
+            .then(data=>{
+                if(data.error){
+                    this.setState({error: data.error})
+                }else {
+                    this.setState({
+                        error: "",
+                        email:"",
+                        password:"",
+                    })
+
+                }
+            })
     };
 
-    signUp = user =>{
-        return fetch('http://localhost:8080/signup', {
+    signIn = user =>{
+        return fetch('http://localhost:8080/signin', {
             method: 'POST',
             headers:{
                 Accept: 'application/json',
@@ -59,12 +56,8 @@ class SignUp extends Component{
             })
     };
 
-    signUpForm = (name, email, password)=>(
+    signInForm = (email, password)=>(
         <form>
-            <div className={'form-group'}>
-                <label className={'text-muted'} >Name</label>
-                <input type={'text'} className={'form-control'} onChange={this.handleChange('name')} value={name}/>
-            </div>
             <div className={'form-group'}>
                 <label className={'text-muted'} >E-mail</label>
                 <input type={'email'} className={'form-control'} onChange={this.handleChange('email')} value={email}/>
@@ -78,18 +71,17 @@ class SignUp extends Component{
     );
 
     render(){
-        const {name, email, password, error, open} = this.state;
+        const {email, password, error, open} = this.state;
         return (
             <div className={'container'}>
-                <h2 className={'mt-5 mb-5'}>Sign up</h2>
+                <h2 className={'mt-5 mb-5'}>Sign In</h2>
                 {/*validation*/}
                 <div className={"alert alert-danger"} style={{display:error ? "":"none"}}>{error}</div>
-                <div className={"alert alert-info"} style={{display:open ? "":"none"}}>New account is successfully created!! Please Sign In.</div>
                 {/*end of validation*/}
-                {this.signUpForm(name, email, password)}
+                {this.signInForm(email, password)}
             </div>
         )
     }
 }
 
-export default SignUp;
+export default SignIn;
