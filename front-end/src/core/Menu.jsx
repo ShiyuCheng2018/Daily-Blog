@@ -32,13 +32,11 @@ const Menu = ({history}) => (
                          style={(isActive(history, "/signout"), {cursor: "pointer", color: "#fff"})}>Sign Out</a>
                   </li>
                   <li className={"nav-item"}>
-                      <a className={"nav-link"}>
-                          {isAuthenticated().user.name}
-                      </a>
+                          <Link to={`/user/${isAuthenticated().user._id}`}  className={"text-white decoration-none nav-link"}>
+                              {`${isAuthenticated().user.name}'s profile`}
+                          </Link>
                   </li>
               </>
-
-
           )}
 
       </ul>
