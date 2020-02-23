@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {isAuthenticated} from "../auth";
 import {Redirect, Link} from 'react-router-dom';
 import {read} from './apiUser';
+import DefaultProfile from '../images/user.png';
 
 class Profile extends Component{
     constructor(){
@@ -28,6 +29,11 @@ class Profile extends Component{
         this.init(userId)
     }
 
+    componentWillReceiveProps(props) {
+        const userId = props.match.params.userId;
+        this.init(userId);
+    }
+
     render() {
         const {redirectToSignIn, user} = this.state;
         // If authentication failed
@@ -35,19 +41,23 @@ class Profile extends Component{
 
         return (
             <div className={"container"}>
+                <h2 className={"mt-5 mb-5"}>Profile</h2>
                 <div className={"row"}>
                     <div className={"col-md-6"}>
-                        <h2 className={"mt-5 mb-5"}>Profile</h2>
-                        <p>Hello {isAuthenticated().user.name}</p>
-                        <p>Email: {isAuthenticated().user.email}</p>
-                        <p>{`Joined ${new Date(this.state.user.created).toDateString()}`}</p>
+                        <img src={DefaultProfile} className="card-img-top" alt="user img" style={{ height: "250px", width: "270px" }}/>
+
                     </div>
 
                     <div className={"col-md-6"}>
+                        <div className={"lead mt-2"}>
+                            <p>Hello {user.name}</p>
+                            <p>Email: {user.email}</p>
+                            <p>{`Joined ${new Date(this.state.user.created).toDateString()}`}</p>
+                        </div>
                         {isAuthenticated().user &&
                         isAuthenticated().user._id === user._id
                         && (
-                            <div className={"d-inline-block mt-5"}>
+                            <div className={"d-inline-block"}>
                                 <Link to={`/user/edit/${user._id}`} className={"btn btn-raised btn-success mr-5"}>
                                       Edit Profile
                                 </Link>
