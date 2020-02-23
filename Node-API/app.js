@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const dotEnv = require("dotenv");
+const cors = require("cors");
 
 dotEnv.config();
 
@@ -21,6 +22,7 @@ const postRouter = require("./routes/postRouter");
 const authRouter = require("./routes/authRouter");
 const userRouter = require("./routes/userRouter");
 
+app.use(cors());
 // Middleware
 app.use(morgan("dev"));
 app.use(bodyParser.json());
