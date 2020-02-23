@@ -3,6 +3,7 @@ import {isAuthenticated} from "../auth";
 import {Redirect, Link} from 'react-router-dom';
 import {read} from './apiUser';
 import DefaultProfile from '../images/user.png';
+import UserDelete from "./UserDelete";
 
 class Profile extends Component{
     constructor(){
@@ -57,11 +58,11 @@ class Profile extends Component{
                         {isAuthenticated().user &&
                         isAuthenticated().user._id === user._id
                         && (
-                            <div className={"d-inline-block"}>
+                            <div className={"row"}>
                                 <Link to={`/user/edit/${user._id}`} className={"btn btn-raised btn-success mr-5"}>
                                       Edit Profile
                                 </Link>
-                                <button className={"btn btn-raised btn-danger"}>DELETE PROFILE</button>
+                                <UserDelete userId={user._id}/>
 
                             </div>
                         )}
