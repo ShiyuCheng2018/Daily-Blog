@@ -5,7 +5,7 @@ import Menu from './core/Menu';
 import SignUp from "./user/SignUp";
 import SignIn from "./user/SignIn";
 import Profile from "./user/Profile";
-import Users from "./user/User";
+import Users from "./user/Users";
 
 
 const MainRouter = () => (
