@@ -45,12 +45,12 @@ class Profile extends Component{
                 <h2 className={"mt-5 mb-5"}>Profile</h2>
                 <div className={"row"}>
                     <div className={"col-md-6"}>
-                        <img src={DefaultProfile} className="card-img-top" alt="user img" style={{ height: "250px", width: "270px" }}/>
+                        <img src={DefaultProfile} className="card-img-top" alt="user img" style={{ height: "250px", width: "250px" }}/>
 
                     </div>
 
                     <div className={"col-md-6"}>
-                        <div className={"lead mt-2"}>
+                        <div className={"lead "}>
                             <p>Hello {user.name}</p>
                             <p>Email: {user.email}</p>
                             <p>{`Joined ${new Date(this.state.user.created).toDateString()}`}</p>
@@ -63,7 +63,6 @@ class Profile extends Component{
                                       Edit Profile
                                 </Link>
                                 <UserDelete userId={user._id}/>
-
                             </div>
                         )}
                     </div>
