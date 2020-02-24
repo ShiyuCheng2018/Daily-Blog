@@ -72,6 +72,12 @@ class Profile extends Component{
                         )}
                     </div>
                 </div>
+                <div className={"row"}>
+                    <div className={"col md-12 mt-5 mb-5"}>
+                        <hr/>
+                        <p className={"lead"}>{user.about}</p>
+                    </div>
+                </div>
 
 
             </div>

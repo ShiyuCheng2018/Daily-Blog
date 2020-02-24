@@ -13,6 +13,7 @@ class EditProfile extends Component{
             email: "",
             password: "",
             error: "",
+            about: "",
             fileSize: 0,
             redirectToProfile: false,
             loading: false
@@ -56,7 +57,7 @@ class EditProfile extends Component{
             if(data.err){
                 this.setState({redirectToProfile: true})
             }else {
-                this.setState({id:data._id, name: data.name, email: data.email, error: ""});
+                this.setState({id:data._id, name: data.name, email: data.email, error: "", about:data.about});
             }
         });
     };
@@ -89,7 +90,7 @@ class EditProfile extends Component{
         return true;
     };
 
-    signUpForm = (name, email, password)=>(
+    signUpForm = (name, email, password, about)=>(
         <form>
             <div className={'form-group'}>
                 <label className={'text-muted'} >Profile Photo</label>
@@ -104,6 +105,10 @@ class EditProfile extends Component{
                 <input type={'email'} className={'form-control'} onChange={this.handleChange('email')} value={email}/>
             </div>
             <div className={'form-group'}>
+                <label className={'text-muted'} >About</label>
+                <textarea type={'text'} className={'form-control'} onChange={this.handleChange('about')} value={about}/>
+            </div>
+            <div className={'form-group'}>
                 <label className={'text-muted'} >Password</label>
                 <input type={'password'} className={'form-control'} onChange={this.handleChange('password')} value={password}/>
             </div>
@@ -112,7 +117,7 @@ class EditProfile extends Component{
     );
 
     render() {
-        const {id, name, email, password, redirectToProfile, error, loading} = this.state;
+        const {id, name, email, about, password, redirectToProfile, error, loading} = this.state;
         if(redirectToProfile){
             return <Redirect to={`/user/${id}`} />;
         }
@@ -131,7 +136,7 @@ class EditProfile extends Component{
                      onError={i => (i.target.src = `${DefaultProfile}`)}
                 />
 
-                {this.signUpForm(name, email, password)}
+                {this.signUpForm(name, email, password, about)}
             </div>
         )
     }
