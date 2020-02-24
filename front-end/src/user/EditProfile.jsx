@@ -71,20 +71,20 @@ class EditProfile extends Component{
     isValid = () => {
         const {name, email,password, fileSize} = this.state;
         if(fileSize === 1000000){
-            this.setState({error: "Photo size should be less than 1MB !"});
+            this.setState({error: "Photo size should be less than 1MB !", loading: false});
             return false
         }
         if(name.length === 0){
-            this.setState({error: "Name is required !"});
+            this.setState({error: "Name is required !", loading: false});
             return false
         }
         //email@domain.com
         if(! /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/.test(email)){
-            this.setState({error: "A valid Email is required !"});
+            this.setState({error: "A valid Email is required !", loading: false});
             return false
         }
         if(password.length >= 1 && password.length <= 3){
-            this.setState({error: "Password must be at least 3 characters long !"});
+            this.setState({error: "Password must be at least 3 characters long !", loading: false});
             return false
         }
         return true;
