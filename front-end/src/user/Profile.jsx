@@ -38,7 +38,7 @@ class Profile extends Component{
     render() {
         const {redirectToSignIn, user} = this.state;
         // If authentication failed
-        if(redirectToSignIn) return <Redirect to={"/"} />;
+        if(redirectToSignIn) return <Redirect to={"/signin"} />;
 
         return (
             <div className={"container"}>
@@ -59,7 +59,7 @@ class Profile extends Component{
                         isAuthenticated().user._id === user._id
                         && (
                             <div className={"row"}>
-                                <Link to={`/user/edit/${user._id}`} className={"btn btn-raised btn-success mr-5"}>
+                                <Link to={`/user/edit/${user._id}`} className={"btn btn-raised btn-success mr-5 ml-3"}>
                                       Edit Profile
                                 </Link>
                                 <UserDelete userId={user._id}/>
