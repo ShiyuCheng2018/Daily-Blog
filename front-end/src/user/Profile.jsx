@@ -37,6 +37,8 @@ class Profile extends Component{
 
     render() {
         const {redirectToSignIn, user} = this.state;
+        // Get the latest image or set it to default avatar
+        const photoUrl = user._id ? `${process.env.REACT_APP_API_URL}/user/photo/${user._id}?${new Date().getTime()}` : DefaultProfile;
         // If authentication failed
         if(redirectToSignIn) return <Redirect to={"/signin"} />;
 
@@ -45,8 +47,11 @@ class Profile extends Component{
                 <h2 className={"mt-5 mb-5"}>Profile</h2>
                 <div className={"row"}>
                     <div className={"col-md-6"}>
-                        <img src={DefaultProfile} className="card-img-top" alt="user img" style={{ height: "250px", width: "250px" }}/>
-
+                        <img src={photoUrl}
+                             className="card-img-top" alt={user.name}
+                             style={{ height: "250px", width: "250px" }}
+                             onError={i => (i.target.src = `${DefaultProfile}`)}
+                        />
                     </div>
 
                     <div className={"col-md-6"}>

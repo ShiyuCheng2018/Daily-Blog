@@ -46,6 +46,10 @@ class SignUp extends Component{
     signUpForm = (name, email, password)=>(
         <form>
             <div className={'form-group'}>
+                <label className={'text-muted'} >Profile Photo</label>
+                <input type={'file'} className={'form-control'} onChange={this.handleChange('photo')} accept={"image/*"}/>
+            </div>
+            <div className={'form-group'}>
                 <label className={'text-muted'} >Name</label>
                 <input type={'text'} className={'form-control'} onChange={this.handleChange('name')} value={name}/>
             </div>

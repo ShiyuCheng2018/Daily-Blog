@@ -44,10 +44,9 @@ export const update = (userId, token, user) => {
         method: "PUT",
         headers: {
             Accept: "application/json",
-            "Content-type": "application/json",
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(user)
+        body: user
     })
         .then(response => {
             return response.json();
@@ -55,11 +54,11 @@ export const update = (userId, token, user) => {
         .catch(err => console.log(err));
 };
 
-export const updateUser = (token, user, next) => {
+export const updateUser = (user, next) => {
     if (typeof window !== "undefined") {
         if (localStorage.getItem("jwt")) {
             let auth = JSON.parse(localStorage.getItem("jwt"));
-            auth = {token, user: user.user};
+            auth.user = user;
             localStorage.setItem("jwt", JSON.stringify(auth));
             next();
         }
