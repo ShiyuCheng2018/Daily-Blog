@@ -21,27 +21,29 @@ class EditProfile extends Component{
 
     clickSubmit = (event) => {
         event.preventDefault();
-        const {name, email, password} = this.state;
-        const user = {
-            name,
-            email,
-            password: password || undefined
-        };
+        if(this.isValid()){
+            const {name, email, password} = this.state;
+            const user = {
+                name,
+                email,
+                password: password || undefined
+            };
 
-        const userId = this.props.match.params.userId;
-        const token = isAuthenticated().token;
-        update(userId, token, user)
-            .then(data=>{
-                if(data.error){
-                    this.setState({error: data.error})
-                }else {
-                    this.setState(updateUser(token, data, ()=>{
-                        this.setState({
-                            redirectToProfile: true
-                        });
-                    }))
-                }
-            })
+            const userId = this.props.match.params.userId;
+            const token = isAuthenticated().token;
+            update(userId, token, user)
+                .then(data=>{
+                    if(data.error){
+                        this.setState({error: data.error})
+                    }else {
+                        this.setState(updateUser(token, data, ()=>{
+                            this.setState({
+                                redirectToProfile: true
+                            });
+                        }))
+                    }
+                })
+        }
     };
 
     init = (userId) => {
@@ -59,6 +61,24 @@ class EditProfile extends Component{
         const userId = this.props.match.params.userId;
         this.init(userId)
     }
+
+    isValid = () => {
+        const {name, email,password} = this.state;
+        if(name.length == 0){
+            this.setState({error: "Name is required !"});
+            return false
+        }
+        //email@domain.com
+        if(! /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/.test(email)){
+            this.setState({error: "A valid Email is required !"});
+            return false
+        }
+        if(password.length >= 1 && password.length <= 3){
+            this.setState({error: "Password must be at least 3 characters long !"});
+            return false
+        }
+        return true;
+    };
 
     signUpForm = (name, email, password)=>(
         <form>
@@ -79,13 +99,17 @@ class EditProfile extends Component{
     );
 
     render() {
-        const {id, name, email, password, redirectToProfile} = this.state;
+        const {id, name, email, password, redirectToProfile, error} = this.state;
         if(redirectToProfile){
             return <Redirect to={`/user/${id}`} />;
         }
+
+
         return (
             <div className={"container"}>
                 <h2 className={"mt-5 mb-5"}>Edit Profile</h2>
+                {/*validation*/}
+                <div className={"alert alert-danger"} style={{display:error ? "":"none"}}>{error}</div>
                 {this.signUpForm(name, email, password)}
             </div>
         )
