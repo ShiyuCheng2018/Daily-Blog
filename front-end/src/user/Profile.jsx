@@ -12,7 +12,8 @@ class Profile extends Component{
         this.state = {
             user: {following: [], followers: []},
             redirectToSignIn: false,
-            following: false
+            following: false,
+            error: " "
         }
     }
 
@@ -25,10 +26,23 @@ class Profile extends Component{
         return match;
     };
 
+    clickFollowButton = callApi => {
+        const userId = isAuthenticated().user._id;
+        const token = isAuthenticated().token;
+        callApi(userId, token, this.state.user._id)
+            .then(data => {
+                if(data.error){
+                    this.setState({error: data.error});
+                }else {
+                    this.setState({user: data, following: !this.state.following});
+                }
+            })
+    };
+
     init = (userId) => {
         const token = isAuthenticated().token;
         read(userId, token).then(data => {
-            if(data.err){
+            if(data.error){
                 this.setState({redirectToSignIn: true})
             }else {
                 let following = this.checkFollow(data);
@@ -81,7 +95,7 @@ class Profile extends Component{
                                 </Link>
                                 <UserDelete userId={user._id}/>
                             </div>
-                        ) : (<FollowProfileButton following={following}/>)}
+                        ) : (<FollowProfileButton following={following} onButtonClick={this.clickFollowButton}/>)}
                     </div>
                 </div>
                 <div className={"row"}>
