@@ -1,9 +1,18 @@
 const express = require("express");
-const {userById, allUsers, getUser, updateUser, deleteUser, userPhoto} = require("../controllers/userController");
+const {userById,
+    allUsers,
+    getUser,
+    updateUser,
+    deleteUser,
+    userPhoto,
+    addFollowing,
+    addFollower} = require("../controllers/userController");
 const {requireSignIn} = require("../controllers/authController");
 
 // Get router
 const router = express.Router();
+
+router.put('/user/follow', requireSignIn, addFollowing, addFollower);
 
 router.get("/users", allUsers);
 router.get("/user/:userId",requireSignIn, getUser);
