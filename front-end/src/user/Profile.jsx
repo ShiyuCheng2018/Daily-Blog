@@ -4,15 +4,26 @@ import {Redirect, Link} from 'react-router-dom';
 import {read} from './apiUser';
 import DefaultProfile from '../images/user.png';
 import UserDelete from "./UserDelete";
+import FollowProfileButton from "./FollowProfileButton";
 
 class Profile extends Component{
     constructor(){
         super();
         this.state = {
-            user: "",
-            redirectToSignIn: false
+            user: {following: [], followers: []},
+            redirectToSignIn: false,
+            following: false
         }
     }
+
+    // check follow
+    checkFollow = user =>{
+        const jwt = isAuthenticated();
+        const match = user.followers.find(follower => {
+            return follower._id === jwt.user.id;
+        });
+        return match;
+    };
 
     init = (userId) => {
         const token = isAuthenticated().token;
@@ -20,7 +31,8 @@ class Profile extends Component{
             if(data.err){
                 this.setState({redirectToSignIn: true})
             }else {
-                this.setState({user:data});
+                let following = this.checkFollow(data);
+                this.setState({user:data, following});
             }
         });
     };
@@ -36,7 +48,7 @@ class Profile extends Component{
     }
 
     render() {
-        const {redirectToSignIn, user} = this.state;
+        const {redirectToSignIn, user, following} = this.state;
         // Get the latest image or set it to default avatar
         const photoUrl = user._id ? `${process.env.REACT_APP_API_URL}/user/photo/${user._id}?${new Date().getTime()}` : DefaultProfile;
         // If authentication failed
@@ -62,14 +74,14 @@ class Profile extends Component{
                         </div>
                         {isAuthenticated().user &&
                         isAuthenticated().user._id === user._id
-                        && (
+                        ? (
                             <div className={"row"}>
                                 <Link to={`/user/edit/${user._id}`} className={"btn btn-raised btn-success mr-5 ml-3"}>
                                       Edit Profile
                                 </Link>
                                 <UserDelete userId={user._id}/>
                             </div>
-                        )}
+                        ) : (<FollowProfileButton following={following}/>)}
                     </div>
                 </div>
                 <div className={"row"}>
@@ -78,7 +90,6 @@ class Profile extends Component{
                         <p className={"lead"}>{user.about}</p>
                     </div>
                 </div>
-
 
             </div>
         )
