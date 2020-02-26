@@ -106,6 +106,7 @@ class Profile extends Component{
                         <hr/>
                         <p className={"lead"}>{user.about}</p>
                         <hr/>
+                        <ProfileTabs following={user.following} followers={user.followers}/>
                     </div>
                 </div>
 
