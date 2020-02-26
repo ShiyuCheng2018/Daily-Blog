@@ -5,6 +5,7 @@ import {read} from './apiUser';
 import DefaultProfile from '../images/user.png';
 import UserDelete from "./UserDelete";
 import FollowProfileButton from "./FollowProfileButton";
+import ProfileTabs from "./ProfileTabs";
 
 class Profile extends Component{
     constructor(){
@@ -21,8 +22,9 @@ class Profile extends Component{
     checkFollow = user =>{
         const jwt = isAuthenticated();
         const match = user.followers.find(follower => {
-            return follower._id === jwt.user.id;
+            return follower._id === jwt.user._id;
         });
+
         return match;
     };
 
@@ -96,12 +98,14 @@ class Profile extends Component{
                                 <UserDelete userId={user._id}/>
                             </div>
                         ) : (<FollowProfileButton following={following} onButtonClick={this.clickFollowButton}/>)}
+
                     </div>
                 </div>
                 <div className={"row"}>
                     <div className={"col md-12 mt-5 mb-5"}>
                         <hr/>
                         <p className={"lead"}>{user.about}</p>
+                        <hr/>
                     </div>
                 </div>
 
