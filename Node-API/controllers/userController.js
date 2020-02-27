@@ -167,4 +167,19 @@ exports.removeFollower = (req, res) => {
         })
 };
 
+// Find who to follow
+exports.findPeople = (req, res) => {
+    let following = req.profile.following;
+    following.push(req.profile._id);
+    User.find({_id: {$nin: following}}, (err, users)=>{
+        if(err){
+            return res.status(400).json({
+                error: err
+            });
+        }else {
+            res.json(users)
+        }
+    }).select("name");
+};
+
 

@@ -8,7 +8,8 @@ const {userById,
     addFollowing,
     addFollower,
     removeFollowing,
-    removeFollower} = require("../controllers/userController");
+    removeFollower,
+    findapaeople} = require("../controllers/userController");
 const {requireSignIn} = require("../controllers/authController");
 
 // Get router
@@ -23,6 +24,8 @@ router.put("/user/:userId", requireSignIn, updateUser);
 router.delete("/user/:userId", requireSignIn, deleteUser);
 // Photo
 router.get("/user/photo/:userId", userPhoto);
+// Find who to follow
+router.get('/user/findpeople/:userId', requireSignIn, findapaeople);
 
 
 // Any route containing :userId, our app will first execute userById()
