@@ -32,6 +32,29 @@ class ProfileTabs extends Component{
                         })}
                         </div>
                     </div>
+                    <div className={"col-md-4 ml-auto"}>
+                        <h3 className={"text-primary"}>Following</h3>
+                        <hr/>
+                        <div className={"row"}>
+                            {followers.map((person, i) =>{
+                                return (<div key={i}>
+                                    <div className={" bg-danger m-3"}>
+                                        <Link to={`/user/${person._id}`} className={"float-left"}>
+                                            <img
+                                                className={"mx-auto"}
+                                                height={"50px"}
+                                                src={`${process.env.REACT_APP_API_URL}/user/photo/${person._id}`}
+                                                onError={i=>(i.target.src = `${DefaultProfile}`)}
+                                                alt={person.name}/>
+                                            <div>
+                                                <h5>{person.name}</h5>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </div>)
+                            })}
+                        </div>
+                    </div>
                 </div>
             </>
         );
