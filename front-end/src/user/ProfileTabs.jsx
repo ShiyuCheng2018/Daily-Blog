@@ -13,7 +13,7 @@ class ProfileTabs extends Component{
                         <h3 className={"text-primary"}>Followers</h3>
                         <hr/>
                         <div className={"row"}>
-                        {following.map((person, i) =>{
+                        {followers.map((person, i) =>{
                             return (<div key={i}>
                                         <div className={" bg-danger m-3"}>
                                             <Link to={`/user/${person._id}`} className={"float-left"}>
@@ -36,7 +36,7 @@ class ProfileTabs extends Component{
                         <h3 className={"text-primary"}>Following</h3>
                         <hr/>
                         <div className={"row"}>
-                            {followers.map((person, i) =>{
+                            {following.map((person, i) =>{
                                 return (<div key={i}>
                                     <div className={" bg-danger m-3"}>
                                         <Link to={`/user/${person._id}`} className={"float-left"}>
