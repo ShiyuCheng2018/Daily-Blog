@@ -3,12 +3,15 @@ import {findPeople} from './apiUser';
 import {Link} from "react-router-dom";
 import DefaultProfile from '../images/user.png';
 import {isAuthenticated} from "../auth";
+import {follow} from "./apiUser";
 
 class FindPeople extends Component{
     constructor(){
         super();
         this.state = {
-            users: []
+            users: [],
+            error: "",
+            open: false
         }
     }
 
@@ -27,6 +30,25 @@ class FindPeople extends Component{
         })
     }
 
+    clickFollow = (user, i) =>{
+        const userId = isAuthenticated().user._id;
+        const token = isAuthenticated().token;
+        follow(userId, token, user._id)
+            .then(data=>{
+                if(data.err){
+                    this.setState({error: data.error});
+                }else {
+                    let toFollow = this.state.users;
+                    toFollow.splice(i, 1);
+                    this.setState({
+                        users: toFollow,
+                        open: true,
+                        followMessage: `Following ${user.name}`
+                    })
+                }
+            })
+    };
+
     renderUsers = users => (
         <div className="row">
             {users.map((user, i) => (
@@ -42,6 +64,9 @@ class FindPeople extends Component{
                         <Link to={`/user/${user._id}`} className="btn btn-raised btn-primary btn-sm">
                             View Profile
                         </Link>
+                        <button className={"btn btn-raised btn-info float-right btn-sm"} onClick={()=>{
+                            this.clickFollow(user, i)
+                        }}>Follow</button>
                     </div>
                 </div>
             ))}
@@ -49,10 +74,11 @@ class FindPeople extends Component{
     );
 
     render() {
-        const {users} = this.state;
+        const {users, open, followMessage} = this.state;
         return(
             <div className={"container"}>
                 <h2 className={"mt-5 mb-5"}>Find People</h2>
+                {open && (<div className={"alert alert-success"}><p>{followMessage}</p></div>)}
                 {this.renderUsers(users)}
             </div>
         )
