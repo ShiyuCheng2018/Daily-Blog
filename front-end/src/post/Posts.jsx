@@ -59,7 +59,7 @@ class Posts extends Component{
                                     {new Date(post.created).toLocaleDateString("en-US")}
                                 </span>
                             </p>
-                            <Link to={`/posts/${post._id}`} className="btn btn-raised btn-primary btn-sm w-100">
+                            <Link to={`/post/${post._id}`} className="btn btn-raised btn-primary btn-sm w-100">
                                 Read more
                             </Link>
                         </div>)
