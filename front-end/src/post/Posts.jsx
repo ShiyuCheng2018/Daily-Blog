@@ -52,6 +52,7 @@ class Posts extends Component{
                                 <h5 className="card-title">{post.title}</h5>
                                 {post.body.length > 250 ? <p className="card-text">{post.body.substring(0, 250)} ...</p> :
                                     <p className="card-text">{post.body}</p>}
+
                             </div>
                             <p className={"font-italic mark text-right"}>
                                 <Link to={postId} > {author}  </Link>
@@ -72,7 +73,7 @@ class Posts extends Component{
         const {posts} = this.state;
         return(
             <div className={"container"}>
-                <h2 className={"mt-5 mb-5"}>Recent Posts</h2>
+                <h2 className={"mt-5 mb-5"}>{!posts.length ? 'Loading ...' : 'Recent Posts'}</h2>
                 {this.renderPosts(posts)}
             </div>
         )
