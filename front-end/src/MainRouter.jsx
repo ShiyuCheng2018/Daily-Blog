@@ -11,8 +11,6 @@ import FindPeople from "./user/FindPeople";
 import NewPost from "./post/NewPost";
 import SinglePost from "./post/SinglePost";
 import PrivateRoute from "./auth/PrivateRoute";
-import ProfileTabs from "./user/ProfileTabs";
-
 
 const MainRouter = () => (
     <div>
@@ -26,7 +24,7 @@ const MainRouter = () => (
             <PrivateRoute exact path={"/user/:userId"} component={Profile}/>
             <PrivateRoute exact path={"/user/edit/:userId"} component={EditProfile}/>
             <PrivateRoute exact path={"/findpeople"} component={FindPeople}/>
-            <PrivateRoute exact path={"/post/create"} component={NewPost}/>
+            <PrivateRoute exact path={"/post/new/create/:userId"} component={NewPost}/>
         </Switch>
     </div>
 );
