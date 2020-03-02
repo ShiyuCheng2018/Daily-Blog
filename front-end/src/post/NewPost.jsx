@@ -100,7 +100,6 @@ class NewPost extends Component{
             </div>
         )
     }
-
 }
 
 export default NewPost;

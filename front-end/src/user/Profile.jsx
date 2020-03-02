@@ -108,6 +108,10 @@ class Profile extends Component{
                         isAuthenticated().user._id === user._id
                         ? (
                             <div className={"row"}>
+                                <Link to={`/post/new/create/${isAuthenticated().user._id}`}
+                                      className={"btn btn-raised btn-info mr-5 ml-3"}>
+                                    Create Post
+                                </Link>
                                 <Link to={`/user/edit/${user._id}`} className={"btn btn-raised btn-success mr-5 ml-3"}>
                                       Edit Profile
                                 </Link>
