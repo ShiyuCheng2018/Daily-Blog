@@ -83,7 +83,11 @@ class ProfileTabs extends Component{
                                                          onError={i => (i.target.src = `${DefaultPost[Math.floor(Math.random() * 7)]}`)}
                                                     />
                                                     <div className="card-body">
-                                                        <Link to={`/post/${post._id}`} className="card-text">{post.title}</Link>
+                                                        {post.title.length > 36 ? <Link to={`/post/${post._id}`} className="card-text">
+                                                            {post.title.substring(0, 36)} ...
+                                                        </Link> :<Link to={`/post/${post._id}`} className="card-text">
+                                                            {post.title}
+                                                        </Link>}
                                                     </div>
                                                     <p className={"font-italic mark text-right"}>
                                                         <span>
