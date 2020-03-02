@@ -6,6 +6,7 @@ import DefaultProfile from '../images/user.png';
 import UserDelete from "./UserDelete";
 import FollowProfileButton from "./FollowProfileButton";
 import ProfileTabs from "./ProfileTabs";
+import {list, listByUser} from "../post/apiPost";
 
 class Profile extends Component{
     constructor(){
@@ -14,9 +15,11 @@ class Profile extends Component{
             user: {following: [], followers: []},
             redirectToSignIn: false,
             following: false,
-            error: " "
+            error: " ",
+            posts: []
         }
-    }
+
+    };
 
     // check follow
     checkFollow = user =>{
@@ -41,6 +44,17 @@ class Profile extends Component{
             })
     };
 
+    loadPosts = (userId, token) => {
+        listByUser(userId, token)
+            .then(data=>{
+                if(data.error){
+                    console.log(data.error)
+                }else {
+                    this.setState({posts: data})
+                }
+            })
+    };
+
     init = (userId) => {
         const token = isAuthenticated().token;
         read(userId, token).then(data => {
@@ -49,6 +63,8 @@ class Profile extends Component{
             }else {
                 let following = this.checkFollow(data);
                 this.setState({user:data, following});
+                this.loadPosts(data._id, token)
+
             }
         });
     };
@@ -64,7 +80,7 @@ class Profile extends Component{
     }
 
     render() {
-        const {redirectToSignIn, user, following} = this.state;
+        const {redirectToSignIn, user, following, posts} = this.state;
         // Get the latest image or set it to default avatar
         const photoUrl = user._id ? `${process.env.REACT_APP_API_URL}/user/photo/${user._id}?${new Date().getTime()}` : DefaultProfile;
         // If authentication failed
@@ -106,7 +122,7 @@ class Profile extends Component{
                         <hr/>
                         <p className={"lead"}>{user.about}</p>
                         <hr/>
-                        <ProfileTabs following={user.following} followers={user.followers}/>
+                        <ProfileTabs following={user.following} followers={user.followers} posts={posts}/>
                     </div>
                 </div>
 
