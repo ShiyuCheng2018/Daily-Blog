@@ -42,7 +42,7 @@ class Posts extends Component{
                     const postId = post.postedBy ? `/user/${post.postedBy._id}` : "";
                     const author = post.postedBy ? post.postedBy.name : "anonymous";
 
-                    return ( <div className="card col-md-4 my-2" key={i} style={{height: "600px"}}>
+                    return ( <div className="card col-md-4 my-2" key={i} style={{height: "620px"}}>
                             <img src={`${process.env.REACT_APP_API_URL}/post/photo/${post._id}`}
                                  className="card-img-top img-thumbnail" alt={post.title}
                                  style={{height: "300px", width:"auto"}}
@@ -50,7 +50,7 @@ class Posts extends Component{
                             />
                             <div className="card-body">
                                 <h5 className="card-title">{post.title}</h5>
-                                {post.body.length > 250 ? <p className="card-text">{post.body.substring(0, 250)} ...</p> :
+                                {post.body.length > 250 ? <p className="card-text">{post.body.substring(0, 260)} ...</p> :
                                     <p className="card-text">{post.body}</p>}
 
                             </div>
