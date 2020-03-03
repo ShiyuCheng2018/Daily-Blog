@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {singlePost} from "./apiPost";
+import {singlePost, removePost} from "./apiPost";
 import DefaultPost_0 from "../images/postDefaults/postDefult_0.png";
 import DefaultPost_1 from "../images/postDefaults/postDefult_1.jpg";
 import DefaultPost_2 from "../images/postDefaults/postDefult_2.png";
@@ -8,13 +8,15 @@ import DefaultPost_4 from "../images/postDefaults/postDefult_4.jpeg";
 import DefaultPost_5 from "../images/postDefaults/postDefult_5.png";
 import DefaultPost_6 from "../images/postDefaults/postDefult_6.png";
 import DefaultPost_7 from "../images/postDefaults/postDefult_7.png";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {isAuthenticated} from "../auth";
+import {remove} from "../user/apiUser";
 
 
 class SinglePost extends Component {
     state={
-        post: ""
+        post: "",
+        redirectHome: false
     };
 
     componentDidMount = () =>{
@@ -26,6 +28,21 @@ class SinglePost extends Component {
                this.setState({post: data})
            }
         });
+    };
+
+    deletePost = () => {
+        const postId = this.props.match.params.postId;
+        const token = isAuthenticated().token;
+
+        removePost(postId, token)
+            .then(data=>{
+                if(data.error){
+                    console.log(data.error);
+                }else {
+                    this.setState({redirectHome: true})
+                }
+
+            });
     };
 
     renderPost = (post) => {
@@ -66,19 +83,22 @@ class SinglePost extends Component {
                         <Link to={'/'} className="btn btn-raised btn-success btn-sm w-100">
                             Edit Post
                         </Link>
-                        <Link to={'/'} className="btn btn-raised btn-danger btn-sm w-100">
+                        <button onClick={this.deletePost} className="btn btn-raised btn-danger btn-sm w-100">
                             Delete Post
-                        </Link>
+                        </button>
                     </>
 
                 )): ""}
-
 
         </div>)
     };
 
     render() {
-        const {post} = this.state;
+        const {post, redirectHome} = this.state;
+        if(redirectHome){
+            return <Redirect to={'/'}/>
+        }
+
         return(
             <div className={"container"}>
                 <div className={"row"}>
