@@ -9,6 +9,7 @@ import DefaultPost_5 from "../images/postDefaults/postDefult_5.png";
 import DefaultPost_6 from "../images/postDefaults/postDefult_6.png";
 import DefaultPost_7 from "../images/postDefaults/postDefult_7.png";
 import {Link} from "react-router-dom";
+import {isAuthenticated} from "../auth";
 
 
 class SinglePost extends Component {
@@ -32,6 +33,7 @@ class SinglePost extends Component {
             DefaultPost_6, DefaultPost_7];
         const postId = post.postedBy ? `/user/${post.postedBy._id}` : "";
         const author = post.postedBy ? post.postedBy.name : "anonymous";
+        console.log(post);
 
         return (
             <div className="card col-md-8 mx-auto my-5" style={{height: "100%"}}>
@@ -51,9 +53,27 @@ class SinglePost extends Component {
                         {new Date(post.created).toLocaleDateString("en-US")}
                     </span>
                 </p>
-                <Link to={`/post/${post._id}`} className="btn btn-raised btn-primary btn-sm w-100">
-                    Read more
+
+                <Link to={'/'} className="btn btn-raised btn-primary btn-sm w-100">
+                    Back to home
                 </Link>
+
+                {isAuthenticated().user && isAuthenticated().user._id === post.postedBy && post.postedBy._id}
+
+
+                {post.postedBy? (isAuthenticated().user && isAuthenticated().user._id === post.postedBy._id && (
+                    <>
+                        <Link to={'/'} className="btn btn-raised btn-success btn-sm w-100">
+                            Edit Post
+                        </Link>
+                        <Link to={'/'} className="btn btn-raised btn-danger btn-sm w-100">
+                            Delete Post
+                        </Link>
+                    </>
+
+                )): ""}
+
+
         </div>)
     };
 
