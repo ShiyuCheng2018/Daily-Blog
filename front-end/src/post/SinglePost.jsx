@@ -83,7 +83,7 @@ class SinglePost extends Component {
                         <Link to={'/'} className="btn btn-raised btn-success btn-sm w-100">
                             Edit Post
                         </Link>
-                        <button onClick={this.deletePost} className="btn btn-raised btn-danger btn-sm w-100">
+                        <button onClick={this.deleteConfirmed} className="btn btn-raised btn-danger btn-sm w-100">
                             Delete Post
                         </button>
                     </>
@@ -91,6 +91,13 @@ class SinglePost extends Component {
                 )): ""}
 
         </div>)
+    };
+
+    deleteConfirmed = () =>{
+        let answer = window.confirm("Are you sure you want to delete your post?");
+        if(answer){
+            this.deletePost()
+        }
     };
 
     render() {
