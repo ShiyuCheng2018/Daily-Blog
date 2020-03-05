@@ -11,6 +11,7 @@ const postSchema = new mogoose.Schema({
         type: String,
         required: true,
     },
+    update: Date,
     photo: {
         data: Buffer,
         contentType: String,
