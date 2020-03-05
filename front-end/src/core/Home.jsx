@@ -57,8 +57,8 @@ const Home = () => (
         {/*main text*/}
         <section class={"container my-5 w3-animate-fading"}>
             <div class={"row"}>
-                <div class={"col col-4 mx-auto"}>
-                    <h1>Hi, I'm Rosenstein</h1>
+                <div class={"col col-5 mx-auto"}>
+                    <h1>Hi, follow me breath ...</h1>
                 </div>
             </div>
             <div class={"row"}>
@@ -68,10 +68,7 @@ const Home = () => (
             </div>
         </section>
         {/*end of main text*/}
-
-
-
-
+        
         <div className={"container"}>
             <Posts/>
         </div>

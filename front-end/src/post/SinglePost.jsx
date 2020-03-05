@@ -80,7 +80,7 @@ class SinglePost extends Component {
 
                 {post.postedBy? (isAuthenticated().user && isAuthenticated().user._id === post.postedBy._id && (
                     <>
-                        <Link to={'/'} className="btn btn-raised btn-success btn-sm w-100">
+                        <Link to={`/post/edit/${post._id}`} className="btn btn-raised btn-success btn-sm w-100">
                             Edit Post
                         </Link>
                         <button onClick={this.deleteConfirmed} className="btn btn-raised btn-danger btn-sm w-100">
