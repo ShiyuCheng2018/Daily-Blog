@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {isAuthenticated} from "../auth";
 import {create} from "./apiPost";
-import {Redirect} from 'react-router-dom';
-import DefaultProfile from '../images/user.png';
 
 class NewPost extends Component{
     constructor(){

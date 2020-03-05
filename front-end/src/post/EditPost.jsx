@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import {updatePost, singlePost} from "./apiPost";
 import {isAuthenticated} from "../auth";
 import {Redirect} from "react-router-dom";
+import DefaultPost_0 from "../images/postDefaults/postDefult_0.png";
+import DefaultPost_1 from "../images/postDefaults/postDefult_1.jpg";
+import DefaultPost_2 from "../images/postDefaults/postDefult_2.png";
+import DefaultPost_3 from "../images/postDefaults/postDefult_3.jpg";
+import DefaultPost_4 from "../images/postDefaults/postDefult_4.jpeg";
+import DefaultPost_5 from "../images/postDefaults/postDefult_5.png";
+import DefaultPost_6 from "../images/postDefaults/postDefult_6.png";
+import DefaultPost_7 from "../images/postDefaults/postDefult_7.png";
+
 
 class EditPost extends Component{
     constructor(){
@@ -100,7 +109,9 @@ class EditPost extends Component{
     );
 
     render() {
-        const {title, body, redirectToProfile} = this.state;
+        let DefaultPost = [DefaultPost_0, DefaultPost_1, DefaultPost_2, DefaultPost_3, DefaultPost_4, DefaultPost_5,
+            DefaultPost_6, DefaultPost_7];
+        const {title, body,id, redirectToProfile, loading, error} = this.state;
 
         if(redirectToProfile){
             return <Redirect to={`/user/${isAuthenticated().user._id}`} />;
@@ -109,8 +120,16 @@ class EditPost extends Component{
         return(
             <>
                 <h2 className={"m-5"}>{title}</h2>
-                {this.editPostForm(title, body)}
 
+                <div className={"alert alert-danger"} style={{display:error ? "":"none"}}>{error}</div>
+                {loading ? <div className={"jumbotron text-center"}><h2>loading....</h2></div> : ""}
+
+                <img src={`${process.env.REACT_APP_API_URL}/post/photo/${id}?${new Date().getTime()}` } alt={"pic"}
+                     style={{ height: "250px", width: "250px" }}
+                     onError={i => (i.target.src = `${DefaultPost[Math.floor(Math.random() * 7)]}`)}
+                />
+
+                {this.editPostForm(title, body)}
             </>
         );
     }

@@ -131,6 +131,7 @@ class EditProfile extends Component{
                 {/*validation*/}
                 <div className={"alert alert-danger"} style={{display:error ? "":"none"}}>{error}</div>
                 {loading ? <div className={"jumbotron text-center"}><h2>loading....</h2></div> : ""}
+
                 <img src={photoUrl} alt={name}
                      style={{ height: "250px", width: "250px" }}
                      onError={i => (i.target.src = `${DefaultProfile}`)}
