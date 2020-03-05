@@ -1,0 +1,24 @@
+/*main two*/
+.main-two .main-two-left, .main-two .main-two-right{
+    color: white;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation-duration: 3s;
+
+}
+
+.main-two-left{
+    background-image:linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+    ), url("https://reefki.sirv.com/stein.rifki.net/2019/06/m/a/h/maaria-lohiya-207499-unsplash.jpg?scale.width=480&scale.height=270&scale.option=fill&cw=480&ch=270&cx=center&cy=center");
+
+}
+
+.main-two-right{
+    background-image:linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+    ), url("https://reefki.sirv.com/stein.rifki.net/2019/06/b/r/h/brooke-cagle-1181685-unsplash.jpg?scale.width=480&scale.height=270&scale.option=fill&cw=480&ch=270&cx=center&cy=center");
+}
