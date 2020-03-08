@@ -26,6 +26,11 @@ const postSchema = new mogoose.Schema({
     },
     likes: [{type: ObjectId, ref:"User"}],
     unlikes: [{type: ObjectId, ref:"User"}],
+    comments: [{
+        text: String,
+        create: {type: Date, default: Date.now},
+        postedBy: {type: ObjectId, ref:"User"}
+    }]
 
 });
 
