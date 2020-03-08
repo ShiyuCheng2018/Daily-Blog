@@ -23,7 +23,10 @@ const postSchema = new mogoose.Schema({
     created: {
         type: Date,
         default: Date.now
-    }
+    },
+    likes: [{type: ObjectId, ref:"User"}],
+    unlikes: [{type: ObjectId, ref:"User"}],
+
 });
 
 module.exports = mogoose.model("Post", postSchema);
