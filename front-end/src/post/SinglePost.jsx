@@ -16,6 +16,7 @@ class SinglePost extends Component {
     state={
         post: "",
         redirectHome: false,
+        redirectToSignIn: false,
         like: false,
         likes: 0,
         unlike: false,
@@ -23,7 +24,7 @@ class SinglePost extends Component {
     };
 
     checkLike = (like) =>{
-        const userId = isAuthenticated().user._id;
+        const userId = isAuthenticated() && isAuthenticated().user._id;
         return like.indexOf(userId) !== -1;
     };
 
@@ -59,6 +60,10 @@ class SinglePost extends Component {
     };
 
     likeToggle = () => {
+        if(!isAuthenticated()){
+            this.setState({redirectToSignIn: true});
+            return false
+        }
         let callApi = this.state.like ? cancelLike : like;
         const userId = isAuthenticated().user._id;
         const postId = this.state.post._id;
@@ -79,6 +84,10 @@ class SinglePost extends Component {
     };
 
     disLikeToggle = () => {
+        if(!isAuthenticated()){
+            this.setState({redirectToSignIn: true});
+            return false
+        }
         let callApi = this.state.unlike ? cancelUnLike : unlike;
         const userId = isAuthenticated().user._id;
         const postId = this.state.post._id;
@@ -177,9 +186,12 @@ class SinglePost extends Component {
     };
 
     render() {
-        const {post, redirectHome} = this.state;
+        const {post, redirectHome, redirectToSignIn} = this.state;
+
         if(redirectHome){
             return <Redirect to={'/'}/>
+        }else  if(redirectToSignIn){
+            return <Redirect to={'/signin'}/>
         }
 
         return(
