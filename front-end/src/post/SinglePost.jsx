@@ -122,12 +122,24 @@ class SinglePost extends Component {
                 </div>
 
                 <p className={"font-italic mark"}>
-                    <span className={"text-left mr-2"} onClick={this.likeToggle} style={{cursor: "pointer"}}>
-                        {likes} Like
-                    </span>
-                    <span className={"text-left"} onClick={this.disLikeToggle} style={{cursor: "pointer"}}>
-                        {unlikes} Dislike
-                    </span>
+
+
+                    {this.state.like?<span className={"text-left mr-2"} onClick={this.likeToggle} style={{cursor: "pointer",color:"blue"}} >
+                        {likes} <i className="far fa-thumbs-up"> </i>
+                    </span>:
+                    <span className={"text-left mr-2"} onClick={this.likeToggle} style={{cursor: "pointer"}} >
+                        {likes} <i className="far fa-thumbs-up"> </i>
+                    </span> }
+
+
+
+                    {this.state.unlike?<span className={"text-left mr-2"} onClick={this.disLikeToggle} style={{cursor: "pointer",color:"blue"}} >
+                        {unlikes} <i className="far fa-thumbs-down"> </i>
+                    </span>:
+                        <span className={"text-left mr-2"} onClick={this.disLikeToggle} style={{cursor: "pointer"}} >
+                        {unlikes} <i className="far fa-thumbs-down"> </i>
+                    </span> }
+
 
                     <span className={"ml-5"}>
                         <Link to={postId} > {author}  </Link>
