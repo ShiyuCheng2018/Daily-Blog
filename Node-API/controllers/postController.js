@@ -158,7 +158,20 @@ exports.singlePost = (req, res) => {
 // Like / Unlike
 exports.like = (req, res) =>{
     postModel.findByIdAndUpdate(req.body.postId,
-        {$push: {likes: req.body.userId}},
+        {$push: {likes: req.body.userId}, $pull: {unlikes: req.body.userId}},
+        {new: true})
+        .exec((err, result)=>{
+            if(err){
+                return res.status(400).json({error: err})
+            }else {
+                res.json(result)
+            }
+        });
+};
+
+exports.cancelLike = (req, res) =>{
+    postModel.findByIdAndUpdate(req.body.postId,
+        {$pull: {likes: req.body.userId}},
         {new: true})
         .exec((err, result)=>{
             if(err){
@@ -171,7 +184,20 @@ exports.like = (req, res) =>{
 
 exports.unlike = (req, res) =>{
     postModel.findByIdAndUpdate(req.body.postId,
-        {$push: {unlikes: req.body.userId}},
+        {$push: {unlikes: req.body.userId}, $pull: {likes: req.body.userId}},
+        {new: true})
+        .exec((err, result)=>{
+            if(err){
+                return res.status(400).json({error: err})
+            }else {
+                res.json(result)
+            }
+        });
+};
+
+exports.cancelUnLike= (req, res) =>{
+    postModel.findByIdAndUpdate(req.body.postId,
+        {$pull:{unlikes: req.body.userId}},
         {new: true})
         .exec((err, result)=>{
             if(err){
