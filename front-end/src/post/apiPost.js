@@ -82,7 +82,25 @@ export const updatePost = (postId, token, post) => {
 
 // Like / Unlike
 export const like = (userId, token, postId) => {
+    console.log(userId, postId);
     return fetch(`${process.env.REACT_APP_API_URL}/post/like`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({userId, postId})
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const cancelLike = (userId, token, postId) => {
+    console.log(userId, postId);
+    return fetch(`${process.env.REACT_APP_API_URL}/post/cancellike`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
@@ -113,4 +131,19 @@ export const unlike = (userId, token, postId) => {
         .catch(err => console.log(err));
 };
 
+export const cancelUnLike = (userId, token, postId) => {
+    return fetch(`${process.env.REACT_APP_API_URL}/post/cancelunlike`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({userId, postId})
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
 
