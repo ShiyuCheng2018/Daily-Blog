@@ -7,6 +7,8 @@ const _ = require("lodash");
 exports.postById = (req, res, next, id) => {
   postModel.findById(id)
       .populate("postedBy",  "_id name")
+      .populate("comments", "text created")
+      .populate("comments.postedBy", "_id name")
       .exec((err, post) => {
           if(err || !post){
               return res.status(400).json({
@@ -204,6 +206,42 @@ exports.cancelUnLike= (req, res) =>{
                 return res.status(400).json({error: err})
             }else {
                 res.json(result)
+            }
+        });
+};
+
+// Comment/Uncomment
+exports.comment = (req, res) =>{
+    let comment = req.body.comment;
+    comment.postedBy = req.body.userId;
+
+    postModel.findByIdAndUpdate(req.body.postId, {$push:{comments:comment}}, {new: true})
+        .populate('comments.postedBy,', '_id name')
+        .populate('postedBy', '_id name')
+        .exec((err, result)=>{
+            if(err){
+                return res.status(400).json({
+                    error:err
+                })
+            }else{
+                res.json(result);
+            }
+        });
+};
+
+exports.uncomment = (req, res) =>{
+    let comment = req.body.comment;
+
+    postModel.findByIdAndUpdate(req.body.postId, {$pull:{comments:{_id: comment._id}}}, {new: true})
+        .populate('comments.postedBy,', '_id name')
+        .populate('postBy', '_id name')
+        .exec((err, result)=>{
+            if(err){
+                return res.status(400).json({
+                    error:err
+                })
+            }else{
+                res.json(result);
             }
         });
 };
