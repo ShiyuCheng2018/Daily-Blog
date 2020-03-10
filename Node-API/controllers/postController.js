@@ -7,8 +7,9 @@ const _ = require("lodash");
 exports.postById = (req, res, next, id) => {
   postModel.findById(id)
       .populate("postedBy",  "_id name")
-      .populate("comments", "text created")
+      // .populate("comments", "text created")
       .populate("comments.postedBy", "_id name")
+      .select('_id title body created likes unlikes comments photo')
       .exec((err, post) => {
           if(err || !post){
               return res.status(400).json({
@@ -23,7 +24,7 @@ exports.postById = (req, res, next, id) => {
 exports.getPosts = (req, res) =>{
     const posts = postModel.find()
         .populate("postedBy", "_id name")
-        .select("_id title body created likes unlikes")
+        .select("_id title body created likes unlikes comments")
         .sort({created: -1})
         .then((posts) => {
             res.json(posts)
@@ -228,6 +229,7 @@ exports.comment = (req, res) =>{
             }
         });
 };
+
 
 exports.uncomment = (req, res) =>{
     let comment = req.body.comment;
