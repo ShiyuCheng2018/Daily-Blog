@@ -11,6 +11,7 @@ import DefaultPost_6 from "../images/postDefaults/postDefult_6.png";
 import DefaultPost_7 from "../images/postDefaults/postDefult_7.png";
 import {Link, Redirect} from "react-router-dom";
 import {isAuthenticated} from "../auth";
+import DefaultProfile from "../images/user.png";
 
 
 class SinglePost extends Component {
@@ -115,16 +116,52 @@ class SinglePost extends Component {
             });
     };
 
+    renderComments = (comments) =>{
+        return comments.map((comment, i) =>{
+            return (<div key={i}>
+                <div className={"container my-2"}>
+                    <div className={"row"}>
+                        <div className={"col-1 bg-dark"}>
+                            <img
+                                className={"mx-auto"}
+                                height={"50px"}
+                                src={`${process.env.REACT_APP_API_URL}/user/photo/${comment.postedBy._id}`}
+                                onError={i=>(i.target.src = `${DefaultProfile}`)}
+                                alt={comment.postedBy._id}/>
+                        </div>
+                        <div className={"col"}>
+                            <h5>{comment.text}</h5>
+                        </div>
+                    </div>
+                    <div className={"row mark"}>
+                        <div className={"col-5 p-0"}>
+                            <p className={"font-italic m-0"}>
+                                {new Date(comment.create).toLocaleDateString("en-US")} by {comment.postedBy.name}
+                            </p>
+                        </div>
+                        <div className={"col-4 ml-auto"}>
+                            <div className={"row h-100 "}>
+                                <button className={"badge badge-pill badge-danger px-4 ml-4"}>DELETE</button>
+                                <button className={"badge badge-pill badge-info px-4 ml-4"}>REPLY</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>)
+        })
+    };
+
     renderPost = (post) => {
         let DefaultPost = [DefaultPost_0, DefaultPost_1, DefaultPost_2, DefaultPost_3, DefaultPost_4, DefaultPost_5,
             DefaultPost_6, DefaultPost_7];
         const postId = post.postedBy ? `/user/${post.postedBy._id}` : "";
         const author = post.postedBy ? post.postedBy.name : "anonymous";
-        const {unlikes, likes} = this.state;
+        const {unlikes, likes, comments} = this.state;
         console.log(post);
 
         return (
-            <div className="card col-md-8 mx-auto my-5" style={{height: "100%"}}>
+            <div className="card col-md-8 mx-auto my-5" style={{height: "80%"}}>
                 <img src={`${process.env.REACT_APP_API_URL}/post/photo/${post._id}`}
                      className="card-img-top mx-auto" alt={post.title}
                      style={{height: "70%", width:"70%"}}
@@ -139,16 +176,12 @@ class SinglePost extends Component {
                 </div>
 
                 <p className={"font-italic mark"}>
-
-
                     {this.state.like?<span className={"text-left mr-2"} onClick={this.likeToggle} style={{cursor: "pointer",color:"blue"}} >
                         {likes} <i className="far fa-thumbs-up"> </i>
                     </span>:
                     <span className={"text-left mr-2"} onClick={this.likeToggle} style={{cursor: "pointer"}} >
                         {likes} <i className="far fa-thumbs-up"> </i>
                     </span> }
-
-
 
                     {this.state.unlike?<span className={"text-left mr-2"} onClick={this.disLikeToggle} style={{cursor: "pointer",color:"blue"}} >
                         {unlikes} <i className="far fa-thumbs-down"> </i>
@@ -157,12 +190,16 @@ class SinglePost extends Component {
                         {unlikes} <i className="far fa-thumbs-down"> </i>
                     </span> }
 
-
                     <span className={"ml-5"}>
                         <Link to={postId} > {author}  </Link>
                         {new Date(post.created).toLocaleDateString("en-US")}
                     </span>
                 </p>
+
+                <hr/>
+                <p>Comments</p>
+                {this.renderComments(comments)}
+                <hr/>
 
                 <Link to={'/'} className="btn btn-raised btn-primary btn-sm w-100">
                     Back to home
@@ -182,6 +219,8 @@ class SinglePost extends Component {
                     </>
 
                 )): ""}
+
+
 
         </div>)
     };
