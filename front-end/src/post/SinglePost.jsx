@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {singlePost, removePost, like, unlike, cancelLike, cancelUnLike} from "./apiPost";
+import Comment from "./Comment";
 import DefaultPost_0 from "../images/postDefaults/postDefult_0.png";
 import DefaultPost_1 from "../images/postDefaults/postDefult_1.jpg";
 import DefaultPost_2 from "../images/postDefaults/postDefult_2.png";
@@ -21,6 +22,7 @@ class SinglePost extends Component {
         likes: 0,
         unlike: false,
         unlikes: 0,
+        comments: []
     };
 
     checkLike = (like) =>{
@@ -34,14 +36,20 @@ class SinglePost extends Component {
            if(data.error){
                console.log(data.error)
            } else {
+               console.log(data);
                this.setState({post: data,
                    likes: data.likes.length,
                    like:this.checkLike(data.likes),
                    unlikes: data.unlikes.length,
                    unlike: this.checkLike(data.unlikes),
+                   comments: data.comments
                })
            }
         });
+    };
+
+    updateComments = comments =>{
+        this.setState({comments})
     };
 
     deletePost = () => {
@@ -186,7 +194,7 @@ class SinglePost extends Component {
     };
 
     render() {
-        const {post, redirectHome, redirectToSignIn} = this.state;
+        const {post, redirectHome, redirectToSignIn, comments} = this.state;
 
         if(redirectHome){
             return <Redirect to={'/'}/>
@@ -197,8 +205,13 @@ class SinglePost extends Component {
         return(
             <div className={"container"}>
                 <div className={"row"}>
-                    {this.renderPost(post)}
+                    <div className={"col"}>
+                        {this.renderPost(post)}
+                        <hr/>
+                        <Comment postId={post._id} comments={comments} updateComments={this.updateComments}/>
+                    </div>
                 </div>
+
             </div>
         )
     }
