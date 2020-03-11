@@ -24,6 +24,11 @@ class Comment extends Component{
 
     addComment = (e) =>{
         e.preventDefault();
+        if(!isAuthenticated()){
+            this.setState({error: "Please sign in to leave your thought !"});
+            return false
+        }
+
         if(this.isValid()){
             const userId = isAuthenticated().user._id;
             const  token = isAuthenticated().token;
