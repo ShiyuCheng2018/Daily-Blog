@@ -57,12 +57,12 @@ const Home = () => (
         {/*main text*/}
         <section class={"container my-5 w3-animate-fading"}>
             <div class={"row"}>
-                <div class={"col col-5 mx-auto"}>
+                <div class={"col text-center"}>
                     <h1>Hi, follow me breath ...</h1>
                 </div>
             </div>
             <div class={"row"}>
-                <div class={"col col-5 mx-auto"}>
+                <div class={"col text-center"}>
                     <h6 class={"font-weight-lighter text-muted"}>A beauty and fashion blogger, love dogs and coffee</h6>
                 </div>
             </div>
