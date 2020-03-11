@@ -135,10 +135,10 @@ class SinglePost extends Component {
             return (<div key={i}>
                 <div className={"container my-2"}>
                     <div className={"row"}>
-                        <div className={"col-1 bg-dark"}>
+                        <div className={"col-1 p-0 bg-dark"}>
                             <img
                                 className={"mx-auto w-100"}
-                                height={"50px"}
+                                height={"55px"}
                                 src={`${process.env.REACT_APP_API_URL}/user/photo/${comment.postedBy._id}`}
                                 onError={i=>(i.target.src = `${DefaultProfile}`)}
                                 alt={comment.postedBy._id}/>
@@ -159,13 +159,14 @@ class SinglePost extends Component {
 
                                 {isAuthenticated().user && isAuthenticated().user._id === comment.postedBy._id && (
                                     <>
-                                        <button onClick={this.deleteCommentConfirmed.bind(this, comment)} className="badge badge-pill badge-danger px-4 ml-4">
+                                        <button onClick={this.deleteCommentConfirmed.bind(this, comment)}
+                                                className="badge badge-pill badge-danger px-4 ml-auto">
                                             DELETE
                                         </button>
                                     </>
                                 )}
 
-                                <button className={"badge badge-pill badge-info px-4 ml-4"}>REPLY</button>
+                                <button className={"badge badge-pill badge-info px-4 ml-auto"}>REPLY</button>
                             </div>
                         </div>
 
@@ -220,7 +221,7 @@ class SinglePost extends Component {
                 </p>
 
                 <hr/>
-                <p>{comments.length} thoughts here: </p>
+                <p>{comments.length} thought(s) here: </p>
                 {this.renderComments(comments.reverse())}
                 <hr/>
 
@@ -257,7 +258,6 @@ class SinglePost extends Component {
             this.deleteComment(comment)
         }
 
-        // this.deleteComment(comment)
     };
 
     render() {
