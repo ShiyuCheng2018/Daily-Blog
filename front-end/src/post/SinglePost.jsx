@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {singlePost, removePost, like, unlike, cancelLike, cancelUnLike} from "./apiPost";
+import {singlePost, removePost, like, unlike, cancelLike, cancelUnLike, uncomment} from "./apiPost";
 import Comment from "./Comment";
 import DefaultPost_0 from "../images/postDefaults/postDefult_0.png";
 import DefaultPost_1 from "../images/postDefaults/postDefult_1.jpg";
@@ -66,6 +66,20 @@ class SinglePost extends Component {
                 }
 
             });
+    };
+
+    deleteComment = (comment) =>{
+        const postId = this.props.match.params.postId;
+        const token = isAuthenticated().token;
+        const userId = isAuthenticated().user._id;
+        uncomment(userId, token, postId, comment)
+            .then(data=>{
+                if(data.error){
+                    console.log(data.error);
+                }else {
+                    this.setState({post: data, comments: data.comments})
+                }
+            })
     };
 
     likeToggle = () => {
@@ -142,7 +156,15 @@ class SinglePost extends Component {
                         </div>
                         <div className={"col-4 ml-auto"}>
                             <div className={"row h-100 "}>
-                                <button className={"badge badge-pill badge-danger px-4 ml-4"}>DELETE</button>
+
+                                {isAuthenticated().user && isAuthenticated().user._id === comment.postedBy._id && (
+                                    <>
+                                        <button onClick={this.deleteCommentConfirmed.bind(this, comment)} className="badge badge-pill badge-danger px-4 ml-4">
+                                            DELETE
+                                        </button>
+                                    </>
+                                )}
+
                                 <button className={"badge badge-pill badge-info px-4 ml-4"}>REPLY</button>
                             </div>
                         </div>
@@ -198,7 +220,7 @@ class SinglePost extends Component {
                 </p>
 
                 <hr/>
-                <p>Comments</p>
+                <p>{comments.length} thoughts here: </p>
                 {this.renderComments(comments.reverse())}
                 <hr/>
 
@@ -227,6 +249,15 @@ class SinglePost extends Component {
         if(answer){
             this.deletePost()
         }
+    };
+
+    deleteCommentConfirmed = (comment) =>{
+        let answer = window.confirm("Are you sure you want to delete your thought?");
+        if(answer){
+            this.deleteComment(comment)
+        }
+
+        // this.deleteComment(comment)
     };
 
     render() {
