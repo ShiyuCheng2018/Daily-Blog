@@ -160,13 +160,15 @@ class SinglePost extends Component {
                                 {isAuthenticated().user && isAuthenticated().user._id === comment.postedBy._id && (
                                     <>
                                         <button onClick={this.deleteCommentConfirmed.bind(this, comment)}
+                                                style={{cursor: "pointer"}}
                                                 className="badge badge-pill badge-danger px-4 ml-auto">
                                             DELETE
                                         </button>
                                     </>
                                 )}
 
-                                <button className={"badge badge-pill badge-info px-4 ml-auto"}>REPLY</button>
+                                <button className={"badge badge-pill badge-info px-4 ml-auto"}
+                                        style={{cursor: "pointer"}}>REPLY</button>
                             </div>
                         </div>
 
