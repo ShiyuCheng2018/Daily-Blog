@@ -123,7 +123,7 @@ class SinglePost extends Component {
                     <div className={"row"}>
                         <div className={"col-1 bg-dark"}>
                             <img
-                                className={"mx-auto"}
+                                className={"mx-auto w-100"}
                                 height={"50px"}
                                 src={`${process.env.REACT_APP_API_URL}/user/photo/${comment.postedBy._id}`}
                                 onError={i=>(i.target.src = `${DefaultProfile}`)}
@@ -136,7 +136,8 @@ class SinglePost extends Component {
                     <div className={"row mark"}>
                         <div className={"col-5 p-0"}>
                             <p className={"font-italic m-0"}>
-                                {new Date(comment.create).toLocaleDateString("en-US")} by {comment.postedBy.name}
+                                {new Date(comment.create).toLocaleDateString("en-US")} by
+                                {<Link to={`/user/${comment.postedBy._id}`}> {comment.postedBy.name}</Link>}
                             </p>
                         </div>
                         <div className={"col-4 ml-auto"}>
@@ -161,7 +162,7 @@ class SinglePost extends Component {
         console.log(post);
 
         return (
-            <div className="card col-md-8 mx-auto my-5" style={{height: "80%"}}>
+            <div className="card col-md-8 mx-auto my-5" style={{height: "85%"}}>
                 <img src={`${process.env.REACT_APP_API_URL}/post/photo/${post._id}`}
                      className="card-img-top mx-auto" alt={post.title}
                      style={{height: "70%", width:"70%"}}
@@ -198,7 +199,7 @@ class SinglePost extends Component {
 
                 <hr/>
                 <p>Comments</p>
-                {this.renderComments(comments)}
+                {this.renderComments(comments.reverse())}
                 <hr/>
 
                 <Link to={'/'} className="btn btn-raised btn-primary btn-sm w-100">
@@ -206,7 +207,6 @@ class SinglePost extends Component {
                 </Link>
 
                 {isAuthenticated().user && isAuthenticated().user._id === post.postedBy && post.postedBy._id}
-
 
                 {post.postedBy? (isAuthenticated().user && isAuthenticated().user._id === post.postedBy._id && (
                     <>
@@ -219,9 +219,6 @@ class SinglePost extends Component {
                     </>
 
                 )): ""}
-
-
-
         </div>)
     };
 

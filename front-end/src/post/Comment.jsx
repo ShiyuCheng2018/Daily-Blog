@@ -25,7 +25,6 @@ class Comment extends Component{
                 }else {
                     this.setState({text: ''});
                     // Dispatch list of comments to parent (SinglePost.jsx"
-                    console.log(data.comments)
                     this.props.updateComments(data.comments);
                 }
             })
@@ -34,10 +33,12 @@ class Comment extends Component{
     render() {
         return (
             <div >
-                <h2>Leave your thought</h2>
                 <form onSubmit={this.addComment}>
                     <div className={"form-group"}>
-                        <input type={"text"} onChange={this.handleChange} className={"form-control"}/>
+                        <input type={"text"} onChange={this.handleChange}
+                               className={"form-control"} value={this.state.text}
+                               placeholder={"You can leave your thought here ..."}
+                        />
                     </div>
                     <button className={"btn btn-raised btn-primary"}>Submit</button>
                 </form>
