@@ -9,7 +9,7 @@ import DefaultPost_4 from "../images/postDefaults/postDefult_4.jpeg";
 import DefaultPost_5 from "../images/postDefaults/postDefult_5.png";
 import DefaultPost_6 from "../images/postDefaults/postDefult_6.png";
 import DefaultPost_7 from "../images/postDefaults/postDefult_7.png";
-
+import {Avatar} from '@material-ui/core';
 
 class ProfileTabs extends Component{
     render() {
@@ -29,12 +29,11 @@ class ProfileTabs extends Component{
                                 return (<div key={i}>
                                             <div className={" bg-danger m-3"}>
                                                 <Link to={`/user/${person._id}`} className={"float-left"}>
-                                                    <img
-                                                        className={"mx-auto"}
-                                                        height={"50px"}
-                                                        src={`${process.env.REACT_APP_API_URL}/user/photo/${person._id}`}
-                                                         onError={i=>(i.target.src = `${DefaultProfile}`)}
-                                                         alt={person.name}/>
+                                                    <Avatar  className={"mx-auto"}
+                                                             height={"50px"}
+                                                             src={`${process.env.REACT_APP_API_URL}/user/photo/${person._id}`}
+                                                             onError={i=>(i.target.src = `${DefaultProfile}`)}
+                                                             alt={person.name}/>
                                                     <div>
                                                         <h5>{person.name}</h5>
                                                     </div>
@@ -52,12 +51,11 @@ class ProfileTabs extends Component{
                                     return (<div key={i}>
                                         <div className={" bg-danger m-3"}>
                                             <Link to={`/user/${person._id}`} className={"float-left"}>
-                                                <img
-                                                    className={"mx-auto"}
-                                                    height={"50px"}
-                                                    src={`${process.env.REACT_APP_API_URL}/user/photo/${person._id}`}
-                                                    onError={i=>(i.target.src = `${DefaultProfile}`)}
-                                                    alt={person.name}/>
+                                                <Avatar  className={"mx-auto"}
+                                                         height={"50px"}
+                                                         src={`${process.env.REACT_APP_API_URL}/user/photo/${person._id}`}
+                                                         onError={i=>(i.target.src = `${DefaultProfile}`)}
+                                                         alt={person.name}/>
                                                 <div>
                                                     <h5>{person.name}</h5>
                                                 </div>

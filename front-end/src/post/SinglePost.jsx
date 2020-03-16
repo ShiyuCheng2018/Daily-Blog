@@ -14,6 +14,7 @@ import {isAuthenticated} from "../auth";
 import DefaultProfile from "../images/user.png";
 
 
+
 class SinglePost extends Component {
     state={
         post: "",
